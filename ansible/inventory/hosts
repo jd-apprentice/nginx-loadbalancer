@@ -1,0 +1,13 @@
+[cloud]
+
+[balancer]
+
+[cloud:vars]
+ansible_ssh_user=cloud_user
+ansible_ssh_pass=
+ansible_sudo_pass=
+
+[balancer:vars]
+ansible_ssh_user=cloud_user
+ansible_ssh_pass=
+ansible_sudo_pass=

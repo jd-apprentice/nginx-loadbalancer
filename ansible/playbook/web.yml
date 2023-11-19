@@ -1,0 +1,30 @@
+---
+- name: web-app
+  hosts: cloud
+  gather_facts: false
+  tasks:
+    - name: create /www/web folder
+      file:
+        path: /home/cloud_user/www/web
+        state: directory
+        owner: cloud_user
+        group: cloud_user
+        mode: '0755'
+
+    - name: copy web.compose.yml
+      copy:
+        src: ../files/web.compose.yml
+        dest: /home/cloud_user/www/web/web.compose.yml
+
+    - name: copy web folder
+      copy:
+        src: ../files/web
+        dest: /home/cloud_user/www/web
+        owner: cloud_user
+        group: cloud_user
+        mode: '0755'
+
+    - name: run docker compose
+      command: docker compose -f /home/cloud_user/www/web/web.compose.yml up -d
+      args:
+        chdir: /home/cloud_user/www/web

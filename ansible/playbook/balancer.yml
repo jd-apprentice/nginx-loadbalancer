@@ -1,0 +1,30 @@
+---
+- name: Create the load balancer
+  hosts: balancer
+  gather_facts: false
+  tasks:
+    - name: create /www/balancer folder
+      file:
+        path: /home/cloud_user/www/balancer
+        state: directory
+        owner: cloud_user
+        group: cloud_user
+        mode: '0755'
+
+    - name: copy balancer.compose.yml
+      copy:
+        src: ../files/balancer.compose.yml
+        dest: /home/cloud_user/www/balancer/balancer.compose.yml
+
+    - name: copy nginx folder
+      copy:
+        src: ../files/nginx
+        dest: /home/cloud_user/www/balancer
+        owner: cloud_user
+        group: cloud_user
+        mode: '0755'
+
+    - name: run docker compose
+      command: docker compose -f /home/cloud_user/www/balancer/balancer.compose.yml up -d
+      args:
+        chdir: /home/cloud_user/www/balancer

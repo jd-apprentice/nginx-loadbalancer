@@ -1,0 +1,12 @@
+version: '3.7'
+services:
+  redis:
+    image: 'redislabs/redismod'
+    ports:
+      - '6379:6379'
+  web:
+    restart: on-failure
+    build: ./web
+    hostname: web
+    ports:
+      - '5000:5000'

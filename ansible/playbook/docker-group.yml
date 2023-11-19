@@ -1,0 +1,15 @@
+---
+- name: add docker group
+  hosts: balancer
+  become: yes
+  tasks:
+    - name: add docker group
+      group:
+        name: docker
+        state: present
+
+    - name: add ubuntu to docker group
+      user:
+        name: "{{ ansible_user }}"
+        groups: docker
+        append: yes

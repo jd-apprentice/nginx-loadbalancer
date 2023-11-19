@@ -1,0 +1,9 @@
+---
+- name: Update system and install packages
+  hosts: balancer
+  become_user: root
+  become: yes
+  tasks:
+    - name: Run apt-get update
+      become: yes
+      apt: update_cache=yes
