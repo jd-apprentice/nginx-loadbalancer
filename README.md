@@ -4,7 +4,9 @@ Demo example of how to build a load balancer with Nginx
 
 Computers i'm using are from cloud guru
 
-![readme](readme.png)
+![demo](Demo.gif)
+
+![img](design.png)
 
 ## Requirements 🧰
 
