@@ -5,26 +5,27 @@
   tasks:
     - name: create /www/web folder
       file:
-        path: /home/cloud_user/www/web
+        path: /home/ubuntu/www/web
         state: directory
-        owner: cloud_user
-        group: cloud_user
+        owner: ubuntu
+        group: ubuntu
         mode: '0755'
 
     - name: copy web.compose.yml
       copy:
         src: ../files/web.compose.yml
-        dest: /home/cloud_user/www/web/web.compose.yml
+        dest: /home/ubuntu/www/web/web.compose.yml
 
     - name: copy web folder
       copy:
         src: ../files/web
-        dest: /home/cloud_user/www/web
-        owner: cloud_user
-        group: cloud_user
+        dest: /home/ubuntu/www/web
+        owner: ubuntu
+        group: ubuntu
         mode: '0755'
 
     - name: run docker compose
-      command: docker compose -f /home/cloud_user/www/web/web.compose.yml up -d
+      become: yes
+      command: docker compose -f /home/ubuntu/www/web/web.compose.yml up -d
       args:
-        chdir: /home/cloud_user/www/web
+        chdir: /home/ubuntu/www/web

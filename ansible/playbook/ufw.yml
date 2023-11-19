@@ -1,6 +1,6 @@
 ---
 - name: Allow ports for web server
-  hosts: cloud
+  hosts: balancer
   tasks:    
   - name: allow http
     become: true
@@ -21,11 +21,4 @@
     ufw:
       rule: allow
       port: 5000
-      proto: tcp
-  
-  - name: allow port 81
-    become: true
-    ufw:
-      rule: allow
-      port: 81
       proto: tcp

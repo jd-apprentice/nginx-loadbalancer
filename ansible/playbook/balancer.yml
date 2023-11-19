@@ -5,26 +5,26 @@
   tasks:
     - name: create /www/balancer folder
       file:
-        path: /home/cloud_user/www/balancer
+        path: /home/ubuntu/www/balancer
         state: directory
-        owner: cloud_user
-        group: cloud_user
+        owner: ubuntu
+        group: ubuntu
         mode: '0755'
 
     - name: copy balancer.compose.yml
       copy:
         src: ../files/balancer.compose.yml
-        dest: /home/cloud_user/www/balancer/balancer.compose.yml
+        dest: /home/ubuntu/www/balancer/balancer.compose.yml
 
     - name: copy nginx folder
       copy:
         src: ../files/nginx
-        dest: /home/cloud_user/www/balancer
-        owner: cloud_user
-        group: cloud_user
+        dest: /home/ubuntu/www/balancer
+        owner: ubuntu
+        group: ubuntu
         mode: '0755'
 
     - name: run docker compose
-      command: docker compose -f /home/cloud_user/www/balancer/balancer.compose.yml up -d
+      command: docker compose -f /home/ubuntu/www/balancer/balancer.compose.yml up -d
       args:
-        chdir: /home/cloud_user/www/balancer
+        chdir: /home/ubuntu/www/balancer
