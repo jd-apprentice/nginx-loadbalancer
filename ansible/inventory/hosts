@@ -4,8 +4,8 @@
 
 [cloud:vars]
 ansible_ssh_user=ubuntu
-ansible_ssh_private_key_file=~/.ssh/balancer.pem
+ansible_ssh_private_key_file=
 
 [balancer:vars]
 ansible_ssh_user=ubuntu
-ansible_ssh_private_key_file=~/.ssh/balancer.pem
+ansible_ssh_private_key_file=
