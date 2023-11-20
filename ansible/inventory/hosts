@@ -1,15 +1,11 @@
 [cloud]
-54.207.21.15
-18.230.115.124
-54.233.240.160
 
 [balancer]
-54.232.5.232
 
 [cloud:vars]
 ansible_ssh_user=ubuntu
-ansible_ssh_private_key_file=~/.ssh/portfolio.pem
+ansible_ssh_private_key_file=~/.ssh/balancer.pem
 
 [balancer:vars]
 ansible_ssh_user=ubuntu
-ansible_ssh_private_key_file=~/.ssh/portfolio.pem
+ansible_ssh_private_key_file=~/.ssh/balancer.pem
